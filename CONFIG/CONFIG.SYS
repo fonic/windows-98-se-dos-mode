@@ -14,17 +14,17 @@ BUFFERS=20
 STACKS=9,256
 LASTDRIVE=Z
 DEVICEHIGH=C:\WINDOWS\COMMAND\DISPLAY.SYS con=(ega,,1)
-REM Does not seem to work when loading high, thus loading low instead
+REM Doesn't seem to work when loading high, thus loading low instead
 REM NOTE: 'DoubleBuffer=1' in MSDOS.SYS does the same thing as DEVICE=...
-REM       here; It's better to load all drivers here in one single place,
-REM       thus we set 'DoubleBuffer=0' in MSDOS.SYS
+REM here. It's better to load all drivers here in one single place, thus
+REM we set 'DoubleBuffer=0' in MSDOS.SYS
 REM DEVICEHIGH=C:\WINDOWS\DBLBUFF.SYS
 DEVICE=C:\WINDOWS\DBLBUFF.SYS
-COUNTRY=049,850,C:\WINDOWS\COMMAND\COUNTRY.SYS
-REM Moved to AUTOEXEC.BAT instead, can silence output there using >NUL
-REM INSTALLHIGH=C:\WINDOWS\COMMAND\MODE.COM con cp prepare=((850) C:\WINDOWS\COMMAND\EGA.CPI)
-REM INSTALLHIGH=C:\WINDOWS\COMMAND\MODE.COM con cp select=850
-REM INSTALLHIGH=C:\WINDOWS\COMMAND\KEYB.COM gr,,C:\WINDOWS\COMMAND\KEYBOARD.SYS
+COUNTRY=001,437,C:\WINDOWS\COMMAND\COUNTRY.SYS
+REM Loaded to AUTOEXEC.BAT instead, can silence output there using >NUL
+REM INSTALLHIGH=C:\WINDOWS\COMMAND\MODE.COM con cp prepare=((437) C:\WINDOWS\COMMAND\EGA.CPI)
+REM INSTALLHIGH=C:\WINDOWS\COMMAND\MODE.COM con cp select=437
+REM INSTALLHIGH=C:\WINDOWS\COMMAND\KEYB.COM us,,C:\WINDOWS\COMMAND\KEYBOARD.SYS
 
 [WINDOWS]
 
@@ -34,10 +34,10 @@ REM INSTALLHIGH=C:\WINDOWS\COMMAND\KEYB.COM gr,,C:\WINDOWS\COMMAND\KEYBOARD.SYS
 REM Using VIDECDD.SYS instead which has a much smaller memory footprint,
 REM leaving this here for future reference
 REM Can't load high as there won't be enough upper memory for the rest
-REM (codepage + keyboard layout will fail)
+REM (loading codepage + keyboard layout will likely fail)
 REM DEVICEHIGH=C:\WINDOWS\COMMAND\EBD\OAKCDROM.SYS /D:MSCD001
 REM DEVICE=C:\WINDOWS\COMMAND\EBD\OAKCDROM.SYS /D:MSCD001
-REM Normal version v2.14
-DEVICEHIGH=C:\TOOLS\VIDECDD1.SYS /D:MSCD001
 REM Patched version version v2.14a
 REM DEVICEHIGH=C:\TOOLS\VIDECDD2.SYS /D:MSCD001
+REM Normal version v2.14
+DEVICEHIGH=C:\TOOLS\VIDECDD1.SYS /D:MSCD001

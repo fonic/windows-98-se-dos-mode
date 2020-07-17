@@ -21,4 +21,6 @@ Your existing configuration and tools will be backed up to `.BAK` files/folders.
 
 ## Configuration
 
-Edit variables in section *Configuration options* in `AUTOEXEC.BAT` to change codepage, keyboard layout and CPU idle driver.
+- Edit variables in section *Configuration options* in `AUTOEXEC.BAT` to change codepage, keyboard layout and CPU idle driver
+- Edit `COUNTRY=...` line in `CONFIG.SYS` to change country code and codepage
+- Adjust other settings in `AUTOEXEC.BAT`, `CONFIG.SYS` and `MSDOS.SYS` to your liking
