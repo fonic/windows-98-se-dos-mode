@@ -17,8 +17,8 @@ REM
 REM Safety checks
 REM
 IF NOT EXIST .\INSTALL.BAT GOTO CHKFAIL
-IF NOT EXIST .\CONFIG\NUL GOTO CHKFAIL
-IF NOT EXIST .\TOOLS\NUL GOTO CHKFAIL
+IF NOT EXIST .\CONFIG\*.* GOTO CHKFAIL
+IF NOT EXIST .\TOOLS\*.* GOTO CHKFAIL
 GOTO CHKPASS
 :CHKFAIL
 ECHO.
@@ -26,7 +26,7 @@ ECHO This script needs to be called from within the directory it is
 ECHO stored in. Please change the current working directory using CD.
 ECHO Aborting.
 ECHO.
-GOTO END
+GOTO EXIT
 :CHKPASS
 
 REM
@@ -53,7 +53,7 @@ REM
 REM Backup existing tools
 REM
 ECHO Backing up existing tools...
-IF NOT EXIST %TOOLS_DST%\NUL GOTO SKPBAK2
+IF NOT EXIST %TOOLS_DST%\*.* GOTO SKPBAK2
 DELTREE /Y %TOOLS_DST%.BAK >NUL
 MOVE %TOOLS_DST% %TOOLS_DST%.BAK >NUL
 :SKPBAK2
@@ -64,4 +64,4 @@ REM
 ECHO Installing new tools...
 XCOPY /S /Y TOOLS %TOOLS_DST%\ >NUL
 
-:END
+:EXIT
