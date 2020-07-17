@@ -1,0 +1,43 @@
+[MENU]
+MENUITEM=WINDOWS,Windows 98 SE
+MENUITEM=DOS,MS-DOS 7.1
+MENUITEM=DOSCD,MS-DOS 7.1 (CD-ROM)
+REM MENUCOLOR=7,1
+MENUDEFAULT=WINDOWS,5
+
+[COMMON]
+DEVICE=C:\WINDOWS\HIMEM.SYS
+DEVICE=C:\WINDOWS\EMM386.EXE NOEMS
+DOS=HIGH,UMB
+FILES=30
+BUFFERS=20
+STACKS=9,256
+LASTDRIVE=Z
+DEVICEHIGH=C:\WINDOWS\COMMAND\DISPLAY.SYS con=(ega,,1)
+REM Does not seem to work when loading high, thus loading low instead
+REM NOTE: 'DoubleBuffer=1' in MSDOS.SYS does the same thing as DEVICE=...
+REM       here; It's better to load all drivers here in one single place,
+REM       thus we set 'DoubleBuffer=0' in MSDOS.SYS
+REM DEVICEHIGH=C:\WINDOWS\DBLBUFF.SYS
+DEVICE=C:\WINDOWS\DBLBUFF.SYS
+COUNTRY=049,850,C:\WINDOWS\COMMAND\COUNTRY.SYS
+REM Moved to AUTOEXEC.BAT instead, can silence output there using >NUL
+REM INSTALLHIGH=C:\WINDOWS\COMMAND\MODE.COM con cp prepare=((850) C:\WINDOWS\COMMAND\EGA.CPI)
+REM INSTALLHIGH=C:\WINDOWS\COMMAND\MODE.COM con cp select=850
+REM INSTALLHIGH=C:\WINDOWS\COMMAND\KEYB.COM gr,,C:\WINDOWS\COMMAND\KEYBOARD.SYS
+
+[WINDOWS]
+
+[DOS]
+
+[DOSCD]
+REM Using VIDECDD.SYS instead which has a much smaller memory footprint,
+REM leaving this here for future reference
+REM Can't load high as there won't be enough upper memory for the rest
+REM (codepage + keyboard layout will fail)
+REM DEVICEHIGH=C:\WINDOWS\COMMAND\EBD\OAKCDROM.SYS /D:MSCD001
+REM DEVICE=C:\WINDOWS\COMMAND\EBD\OAKCDROM.SYS /D:MSCD001
+REM Normal version v2.14
+DEVICEHIGH=C:\TOOLS\VIDECDD1.SYS /D:MSCD001
+REM Patched version version v2.14a
+REM DEVICEHIGH=C:\TOOLS\VIDECDD2.SYS /D:MSCD001
